@@ -4,5 +4,11 @@ declare global {
     conn: Connection | null;
     promise: Promise<Connection> | null;
   };
+  interface ISocialLinks {
+    linkedin?: string;
+    github?: string;
+    twitter?: string;
+    portfolio?: string;
+  }
 }
 export {};

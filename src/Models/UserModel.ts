@@ -1,61 +1,39 @@
 import mongoose, { Schema, model, models, Document } from "mongoose";
 import bcrypt from "bcryptjs";
 
-interface ISocialLinks {
-  linkedin?: string;
-  github?: string;
-  twitter?: string;
-  portfolio?: string;
-}
-interface User extends Document {
-  username: {
-    type: string;
-    required: true;
-  };
-  domain: {
-    type: string;
-    required: true;
-  };
-  email: {
-    type: string;
-    required: true;
-    unique: true;
-  };
+// Define a simple interface for social links.
+
+// Define the interface for a User document.
+export interface User extends Document {
+  username: string;
+  domain?: string; // Optional if you decide to use it
+  email: string;
   password: string;
   avatar?: string;
   bio?: string;
   graduationYear: number;
   college: string;
   jobTitle?: string;
-  blockedUser?: {
-    type: mongoose.Types.ObjectId[];
-    ref: "User";
-  };
+  blockedUser?: mongoose.Types.ObjectId[];
   company?: string;
-  connections: {
-    type: mongoose.Types.ObjectId[];
-    ref: "User";
-  };
+  connections: mongoose.Types.ObjectId[];
   location?: string;
   experience?: number;
   skills: string[];
   socialLinks: ISocialLinks;
-  communities?: {
-    type: mongoose.Types.ObjectId[];
-    ref: "Community";
-  };
-  _id: mongoose.Types.ObjectId;
-  posts?: {
-    type: mongoose.Types.ObjectId[];
-    ref: "Post";
-  };
+  isverified?: boolean;
+  communities?: mongoose.Types.ObjectId[];
+  posts?: mongoose.Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
 }
 
-const userSchema = new mongoose.Schema<User>(
+// Define the Mongoose schema.
+const userSchema = new Schema<User>(
   {
     username: { type: String, required: true, unique: true },
+
+    domain: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     avatar: { type: String, default: "" },
@@ -76,17 +54,22 @@ const userSchema = new mongoose.Schema<User>(
     blockedUser: [{ type: Schema.Types.ObjectId, ref: "User" }],
     connections: [{ type: Schema.Types.ObjectId, ref: "User" }],
     posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+    isverified: { type: Boolean, default: false },
   },
   {
     timestamps: true,
   }
 );
+
+// Pre-save hook to hash the password if it has been modified.
 userSchema.pre("save", async function (next) {
-  //pre hook is used to run some code before saving the document
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 10);
   }
-  next(); //next is used to move to the next middleware
+  next();
 });
-const User = models?.User || model<User>("User", userSchema); //pattern to prevent nodelrecompition in nextjs
+
+// Prevent recompilation in environments like Next.js.
+const User = models.User || model<User>("User", userSchema);
+
 export default User;
