@@ -6,4 +6,13 @@ declare module "next-auth" {
       id: String;
     } & DefaultSession["user"];
   }
+  interface User {
+    databaseId: string;
+  }
+}
+declare module "next-auth/jwt" {
+  interface JWT {
+    /** The internal MongoDB user id */
+    id?: string;
+  }
 }

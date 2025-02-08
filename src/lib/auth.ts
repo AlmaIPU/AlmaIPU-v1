@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import LinkedInProvider from "next-auth/providers/linkedin";
 import User from "@/Models/UserModel";
 import bcrypt from "bcryptjs";
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -16,7 +17,6 @@ export const authOptions: NextAuthOptions = {
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Missing email or password");
         }
-        //logic
         try {
           await dbConnect();
           const user = await User.findOne({ email: credentials.email });
@@ -31,9 +31,9 @@ export const authOptions: NextAuthOptions = {
             throw new Error("Invalid Password");
           }
           return {
-            //session form main milega
             id: user._id.toString(),
             email: user.email,
+            databaseId: user._id.toString(),
           };
         } catch (error) {
           throw error;
@@ -47,41 +47,97 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    async signIn({ email }) {
+    // signIn callback is executed after a successful OAuth login.
+    async signIn({ user, account, profile }) {
       try {
         await dbConnect();
-        const existingUser = await User.findOne({ email: email });
-        if (existingUser) {
+
+        // Check if this is the LinkedIn provider.
+        if (account?.provider === "linkedin") {
+          // Retrieve the email from either the user object or profile.
+          const email = user?.email || (profile as any)?.email;
+          if (!email) {
+            console.error("No email returned from LinkedIn");
+            return false;
+          }
+          // Check if a user with this email already exists.
+          let existingUser = await User.findOne({ email });
+          if (!existingUser) {
+            // If no user exists, create a new one using defaults.
+            // Generate a username from the user's name or email.
+            const baseUsername =
+              user?.name?.replace(/\s+/g, "").toLowerCase() ||
+              email.split("@")[0];
+            // Use a random string as password since social login doesn't use it.
+            const randomPassword = Math.random().toString(36).slice(-8);
+            const hashedPassword = await bcrypt.hash(randomPassword, 10);
+
+            // Create new user with required defaults.
+            const newUser = await User.create({
+              username: baseUsername,
+              domain: "linkedin",
+              email: email,
+              password: hashedPassword,
+              graduationYear: new Date().getFullYear(), // default to current year
+              college: "Not Provided",
+              avatar: user?.image || (profile as any)?.image || "",
+              bio: "",
+              jobTitle: "",
+              company: "",
+              location: "",
+              experience: 0,
+              skills: [],
+              socialLinks: {
+                linkedin: "",
+                github: "",
+                twitter: "",
+                portfolio: "",
+              },
+              blockedUser: [],
+              connections: [],
+              isverified: false,
+              communities: [],
+              posts: [],
+            });
+            // Attach the new user's id to the user object.
+            user.databaseId = newUser._id.toString();
+          } else {
+            // If user exists, attach its id.
+            user.databaseId = existingUser._id.toString();
+          }
           return true;
         }
-        return false;
+        // For other providers (like Credentials), simply allow sign in.
+        return true;
       } catch (error) {
-        throw new Error("Error while signing in");
+        console.error("Error during LinkedIn signIn callback:", error);
         return false;
       }
     },
 
     async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
+      if (user?.databaseId) {
+        token.id = user.databaseId;
       }
       return token;
     },
+
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
       }
-      return session; //always return
+      return session;
     },
   },
   pages: {
     signIn: "/login",
     error: "/login",
   },
-  //   prop4
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
+
+export default authOptions;
