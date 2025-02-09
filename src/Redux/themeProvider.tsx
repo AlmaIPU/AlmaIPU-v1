@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store";
 import { setTheme } from "./themeSlice";
 
-export default function ThemeProvider({ children }: { children: React.ReactNode }) {
+export default function ThemeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const dispatch = useDispatch();
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 

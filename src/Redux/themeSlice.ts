@@ -5,7 +5,7 @@ type ThemeState = {
 };
 
 const initialState: ThemeState = {
-  darkMode: null, 
+  darkMode: null,
 };
 
 const themeSlice = createSlice({

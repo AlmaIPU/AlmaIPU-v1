@@ -1,11 +1,7 @@
 import React from "react";
 
-function Community(){
-    return(
-        <div>
-            Community
-        </div>
-    )
+function Community() {
+  return <div>Community</div>;
 }
 
-export default  Community
+export default Community;

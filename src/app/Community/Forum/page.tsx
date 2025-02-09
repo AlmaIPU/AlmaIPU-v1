@@ -1,11 +1,7 @@
 import React from "react";
 
-function Forum(){
-    return(
-        <div>
-            Forum
-        </div>
-    )
+function Forum() {
+  return <div>Forum</div>;
 }
 
-export default  Forum
+export default Forum;

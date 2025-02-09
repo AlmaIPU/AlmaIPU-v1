@@ -11,9 +11,7 @@ const HomePage = () => {
     <>
       <div>Home</div>
       <div>
-        <button onClick={handelNavigate}>
-          login
-        </button>
+        <button onClick={handelNavigate}>login</button>
       </div>
     </>
   );

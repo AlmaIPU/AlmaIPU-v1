@@ -9,8 +9,8 @@ import { Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import RegisterImage from "../../Assets/Images/Register.png";
-import LogoLight from "../../Assets/Logo/LogoLight.png"
-import LogoDark from "../../Assets/Logo/LogoDark.png"
+import LogoLight from "../../Assets/Logo/LogoLight.png";
+import LogoDark from "../../Assets/Logo/LogoDark.png";
 
 interface User {
   firstName: string;

@@ -27,9 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${montserrat.variable} ${geistMono.variable} antialiased`}
+      >
         <ReduxProvider>
-          <ThemeProvider> {/* Wrap inside ThemeProvider */}
+          <ThemeProvider>
+            {" "}
+            {/* Wrap inside ThemeProvider */}
             {children}
           </ThemeProvider>
         </ReduxProvider>

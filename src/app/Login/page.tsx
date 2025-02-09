@@ -10,8 +10,8 @@ import { FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import Image from "next/image";
 import RegisterImage from "../../Assets/Images/Register.png";
 import axios from "axios";
-import LogoLight from "../../Assets/Logo/LogoLight.png"
-import LogoDark from "../../Assets/Logo/LogoDark.png"
+import LogoLight from "../../Assets/Logo/LogoLight.png";
+import LogoDark from "../../Assets/Logo/LogoDark.png";
 
 const Login = () => {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
@@ -72,7 +72,12 @@ const Login = () => {
     <div className={darkMode ? "dark" : ""}>
       {/* Logo */}
       <div className="absolute top-4 left-4">
-        <Image src={darkMode ? LogoDark : LogoLight} alt="Site Logo" width={70} height={70} />
+        <Image
+          src={darkMode ? LogoDark : LogoLight}
+          alt="Site Logo"
+          width={70}
+          height={70}
+        />
       </div>
       <div className="min-h-screen bg-white dark:bg-[#1A2251] flex font-montserrat">
         {/* Left Side - Form */}
