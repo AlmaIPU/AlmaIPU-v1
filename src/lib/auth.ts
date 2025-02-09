@@ -78,7 +78,7 @@ export const authOptions: NextAuthOptions = {
               domain: "linkedin",
               email: email,
               password: hashedPassword,
-              graduationYear: new Date().getFullYear(), // default to current year
+              graduationYear: 2025, // default to current year
               college: "Not Provided",
               avatar: user?.image || (profile as any)?.image || "",
               bio: "",
@@ -137,7 +137,7 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET!,
 };
 
 export default authOptions;
