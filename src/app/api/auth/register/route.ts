@@ -1,20 +1,9 @@
 // app/actions/auth.ts
 import { dbConnect } from "@/Database/Config/DbConfig";
 import User from "@/Models/UserModel";
-import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 
-// Type for the registration response
-// type RegisterResponse = {
-//   success: boolean;
-//   message: string;
-//   user?: any;
-// };
-
-export default async function POST(
-  request: NextRequest,
-  response: NextResponse
-) {
+export default async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
 
@@ -42,7 +31,7 @@ export default async function POST(
   } catch (error) {
     return NextResponse.json(
       {
-        message: "An error occurred in register route",
+        message: "An error occurred in register route" + error,
       },
       {
         status: 500,

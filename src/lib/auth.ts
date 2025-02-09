@@ -55,13 +55,13 @@ export const authOptions: NextAuthOptions = {
         // Check if this is the LinkedIn provider.
         if (account?.provider === "linkedin") {
           // Retrieve the email from either the user object or profile.
-          const email = user?.email || (profile as any)?.email;
+          const email = user?.email || profile?.email;
           if (!email) {
             console.error("No email returned from LinkedIn");
             return false;
           }
           // Check if a user with this email already exists.
-          let existingUser = await User.findOne({ email });
+          const existingUser = await User.findOne({ email });
           if (!existingUser) {
             // If no user exists, create a new one using defaults.
             // Generate a username from the user's name or email.
@@ -80,7 +80,7 @@ export const authOptions: NextAuthOptions = {
               password: hashedPassword,
               graduationYear: 2025, // default to current year
               college: "Not Provided",
-              avatar: user?.image || (profile as any)?.image || "",
+              avatar: user?.image || profile?.image || "",
               bio: "",
               jobTitle: "",
               company: "",
