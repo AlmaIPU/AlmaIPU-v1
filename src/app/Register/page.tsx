@@ -11,6 +11,7 @@ import Image from "next/image";
 import RegisterImage from "../../Assets/Images/Register.png";
 import LogoLight from "../../Assets/Logo/LogoLight.png";
 import LogoDark from "../../Assets/Logo/LogoDark.png";
+import { signIn } from "next-auth/react";
 
 interface User {
   firstName: string;
@@ -172,6 +173,16 @@ const Register = () => {
             </form>
           </div>
         </div>
+        <button
+          onClick={() => {
+            signIn("linkedin", {
+              callbackUrl: `${window.location.origin}/Register`,
+            });
+          }}
+          className="inline-flex w-full justify-center rounded-md  bg-[#FFCC04] p-3 text-[#1A2251] hover:text-[#E3F4FD]"
+        >
+          <FaLinkedinIn size={20} />
+        </button>
 
         {/* Right Side Image */}
         <div className="flex w-1/2 bg-[#1A2251] dark:bg-[#E3F4FD] shadow-[0_10px_30px_rgba(26,34,81,1.5)] dark:shadow-[0_10px_30px_rgba(173,216,230,0.8)] relative">

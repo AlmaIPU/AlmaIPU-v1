@@ -43,6 +43,13 @@ export const authOptions: NextAuthOptions = {
     LinkedInProvider({
       clientId: process.env.LINKEDIN_CLIENT_ID!,
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
+      authorization: {
+        params: { scope: "openid profile email" },
+        url: "https://www.linkedin.com/oauth/v2/authorization",
+      },
+      token: {
+        url: "https://www.linkedin.com/oauth/v2/accessToken",
+      },
     }),
   ],
 
@@ -130,8 +137,9 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: "/login",
-    error: "/login",
+    signIn: "/Login",
+    error: "/Login",
+    newUser: "/Register",
   },
   session: {
     strategy: "jwt",
