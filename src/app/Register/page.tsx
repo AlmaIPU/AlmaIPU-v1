@@ -8,7 +8,7 @@ import { FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
 import Image from "next/image";
-import RegisterImage from "../../Assets/Images/Register.png";
+import RegisterImage from "../../Assets/Images/Register1.png";
 import LogoLight from "../../Assets/Logo/LogoLight.png";
 import LogoDark from "../../Assets/Logo/LogoDark.png";
 
@@ -70,18 +70,21 @@ const Register = () => {
           height={70}
         />
       </div>
-      <div className="min-h-screen bg-white dark:bg-[#1A2251] flex font-montserrat">
+      <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#121C42] flex font-montserrat">
         {/* Form */}
-        <div className="w-full md:w-1/2 flex items-center justify-center p-8">
-          <div className="w-full max-w-md space-y-6">
+        <div className="w-full md:w-1/2 flex items-center justify-center p-8 ">
+          <div className="w-full max-w-md space-y-4">
             <div className="text-center">
-              <h1 className="flex font-semibold items-center justify-start gap-2 text-5xl text-[#1A2251] dark:text-[#E3F4FD]">
+              <h1 className="flex font-semibold items-center justify-start gap-2 text-5xl text-[#121C42] dark:text-[#E3F4FD]">
                 Create an account
               </h1>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 text-[#1A2251]">
-              <div className="grid grid-cols-2 gap-4">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-2 text-[#1A2251] dark:text-[#C8E6F9]"
+            >
+              <div className="grid grid-cols-2 gap-2">
                 <input
                   type="text"
                   name="firstName"
@@ -89,7 +92,7 @@ const Register = () => {
                   value={user.firstName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-md bg-[#E3F4FD] dark:bg-[#324F93] border-2  focus:border-[#1A2251] focus:outline-none transition-colors font-bold placeholder-[#1A2251] dark:placeholder-[#E3F4FD]"
+                  className="w-full px-4 py-3 rounded-md bg-[#C8E6F9] dark:bg-[#495FDB]   focus:border-[#1A2251] focus:outline-none font-bold placeholder-[#1A2251] dark:placeholder-[#C8E6F9]"
                 />
                 <input
                   type="text"
@@ -99,7 +102,7 @@ const Register = () => {
                   value={user.lastName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-md bg-[#E3F4FD] dark:bg-[#324F93] border-2  focus:border-[#1A2251] focus:outline-none transition-colors font-bold placeholder-[#1A2251] dark:placeholder-[#E3F4FD]"
+                  className="-full px-4 py-3 rounded-md bg-[#C8E6F9] dark:bg-[#495FDB]   focus:border-[#1A2251] focus:outline-none font-bold placeholder-[#1A2251] dark:placeholder-[#C8E6F9]"
                 />
               </div>
 
@@ -110,7 +113,7 @@ const Register = () => {
                 value={user.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-md bg-[#E3F4FD] dark:bg-[#324F93] border-2  focus:border-[#1A2251] focus:outline-none transition-colors font-bold placeholder-[#1A2251] dark:placeholder-[#E3F4FD]"
+                className="w-full px-4 py-3 rounded-md bg-[#C8E6F9] dark:bg-[#495FDB]   focus:border-[#1A2251] focus:outline-none font-bold placeholder-[#1A2251] dark:placeholder-[#C8E6F9]"
               />
 
               <div className="relative">
@@ -122,7 +125,7 @@ const Register = () => {
                   onChange={handleChange}
                   required
                   minLength={6}
-                  className="w-full px-4 py-3 rounded-md bg-[#E3F4FD] dark:bg-[#324F93] border-2  focus:border-[#1A2251] focus:outline-none transition-colors font-bold placeholder-[#1A2251] dark:placeholder-[#E3F4FD]"
+                  className="w-full px-4 py-3 rounded-md bg-[#C8E6F9] dark:bg-[#495FDB]   focus:border-[#1A2251] focus:outline-none font-bold placeholder-[#1A2251] dark:placeholder-[#C8E6F9]"
                 />
                 <button
                   type="button"
@@ -136,51 +139,55 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-md bg-[#1A2251] dark:bg-[#E3F4FD]  font-semibold transition-all duration-200 hover:text-[#E3F4FD] focus:ring-2 focus:ring-[#1A2251] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-[#FFCC04] dark:text-[#1A2251]"
+                className="w-full py-3 rounded-md bg-[#121C42] dark:bg-[#E3F4FD]  font-semibold transition-all duration-200 hover:text-[#FFCC04] focus:ring-2 focus:ring-[#1A2251] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-[#E3F4FD] dark:text-[#1A2251]"
               >
                 {loading ? "Creating Account..." : "Sign Up"}
               </button>
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300 dark:border-gray-600" />
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="bg-white dark:bg-[#1A2251] px-2 text-[#1A2251] dark:text-[#E3F4FD] font-bold">
-                    Or continue with
-                  </span>
-                </div>
-              </div>
+            </form>
 
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300 dark:border-gray-600" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="bg-[#FFFFFF] dark:bg-[#121C42] text-[#121C42] dark:text-[#E3F4FD] font-bold">
+                  Or continue with
+                </span>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              {/* Social Login Buttons */}
               <div className="flex gap-2 items-center justify-center">
-                <button className="inline-flex w-full justify-center rounded-md  bg-[#FFCC04] p-3 text-[#1A2251] hover:text-[#E3F4FD]">
+                <button className="inline-flex w-full justify-center rounded-md bg-[#FFCC04] p-3 text-[#1A2251] hover:text-[#E3F4FD]">
                   <FaLinkedinIn size={20} />
                 </button>
-
-                <button className="inline-flex w-full justify-center rounded-md  bg-[#FFCC04] p-3 text-[#1A2251] hover:text-[#E3F4FD]">
+                <button className="inline-flex w-full justify-center rounded-md bg-[#FFCC04] p-3 text-[#1A2251] hover:text-[#E3F4FD]">
                   <FaGoogle size={20} />
                 </button>
               </div>
 
+              {/* Login Button */}
               <button
                 type="submit"
                 disabled={loading}
                 onClick={() => router.push("/Login")}
-                className="w-full py-3 rounded-md bg-[#1A2251] dark:bg-[#E3F4FD]  font-semibold transition-all duration-200 hover:text-[#E3F4FD] focus:ring-2 focus:ring-[#1A2251] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-[#FFCC04] dark:text-[#1A2251]"
+                className="w-full py-3 rounded-md bg-[#121C42] dark:bg-[#E3F4FD] font-semibold transition-all duration-200 hover:text-[#FFCC04] focus:ring-2 focus:ring-[#1A2251] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-[#E3F4FD] dark:text-[#1A2251]"
               >
                 {loading ? "Redirecting..." : "Log In"}
               </button>
-            </form>
+            </div>
           </div>
         </div>
 
         {/* Right Side Image */}
-        <div className="flex w-1/2 bg-[#1A2251] dark:bg-[#E3F4FD] shadow-[0_10px_30px_rgba(26,34,81,1.5)] dark:shadow-[0_10px_30px_rgba(173,216,230,0.8)] relative">
+        <div className="flex w-1/2 bg-[#FFFFFF] dark:bg-[#121C42] relative">
           <div className="relative w-full h-full flex items-center justify-center">
             <Image
               src={RegisterImage}
               alt="Register Logo"
-              width={5000}
-              height={5000}
+              width={2000}
+              height={2000}
               className="max-w-full max-h-full object-cover rounded-2xl p-16"
             />
           </div>
