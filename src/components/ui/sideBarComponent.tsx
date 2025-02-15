@@ -43,7 +43,7 @@ export const SidebarLink: React.FC<SidebarLinkProps> = ({
       href={link.href}
       className={cn(
         "flex items-center justify-start gap-2 group py-2 transition-colors duration-150",
-        "hover:bg-[#121C42] dark:hover:bg-[#FFFFFF]  rounded-lg p-2",
+        "rounded-lg p-2",
         className
       )}
       onClick={handleClick}

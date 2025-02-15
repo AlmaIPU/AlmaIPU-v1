@@ -75,8 +75,8 @@ const Register = () => {
         <div className="w-full md:w-1/2 flex items-center justify-center p-8 ">
           <div className="w-full max-w-md space-y-4">
             <div className="text-center">
-              <h1 className="flex font-semibold items-center justify-start gap-2 text-5xl text-[#121C42] dark:text-[#E3F4FD]">
-                Create an account
+              <h1 className="flex font-semibold items-center justify-start gap-2 text-5xl text-[#121C42] dark:text-[#E3F4FD] text-start whitespace-nowrap">
+                Create an Account
               </h1>
             </div>
 
