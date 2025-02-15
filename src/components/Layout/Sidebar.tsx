@@ -16,9 +16,11 @@ import LogoLight from "../../Assets/Logo/LogoLight.png";
 import ThemeToggle from "../ui/themeToggel";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
+import { usePathname } from "next/navigation";
 
 const SidebarComponent = () => {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+  const pathname = usePathname();
 
   const AlmaIPU = () => (
     <Image
@@ -33,31 +35,31 @@ const SidebarComponent = () => {
   const links = [
     {
       label: "Home",
-      href: "",
+      href: "/dashboard",
       icon: <House className="h-5 w-5 flex-shrink-0" />,
       isBottom: false,
     },
     {
       label: "Search",
-      href: "",
+      href: "/search",
       icon: <Search className="h-5 w-5 flex-shrink-0" />,
       isBottom: false,
     },
     {
       label: "Community",
-      href: "",
+      href: "/community",
       icon: <Users className="h-5 w-5 flex-shrink-0" />,
       isBottom: false,
     },
     {
       label: "Connection",
-      href: "",
+      href: "/connection",
       icon: <Handshake className="h-5 w-5 flex-shrink-0" />,
       isBottom: false,
     },
     {
       label: "Catch-Up",
-      href: "",
+      href: "/catch-up",
       icon: <MessageCircleMore className="h-5 w-5 flex-shrink-0" />,
       isBottom: false,
     },
@@ -69,7 +71,7 @@ const SidebarComponent = () => {
     },
     {
       label: "Ankit",
-      href: "",
+      href: "/profile",
       icon: <CircleUser className="h-5 w-5 flex-shrink-0" />,
       isBottom: true,
     },
@@ -81,10 +83,15 @@ const SidebarComponent = () => {
     },
   ];
 
+  const isLinkActive = (href: string) => {
+    if (href === "") return false;
+    return pathname === href;
+  };
+
   return (
     <Sidebar>
       <SidebarBody className="justify-between">
-        <div className="flex h-full flex-col flex-1 overflow-y-auto overflow-x-hidden">
+        <div className="flex h-full flex-col flex-1 overflow-y-auto overflow-x-hidden font-montserrat font-semibold">
           <AlmaIPU />
           <div className="flex h-full flex-col">
             {/* Top Links */}
@@ -95,7 +102,14 @@ const SidebarComponent = () => {
                   <SidebarLink
                     key={idx}
                     link={link}
-                    className="hover:bg-[#121C42] text-[#121C42] rounded-lg p-2 hover:text-[#FFFFFF]"
+                    className={`
+                      rounded-lg p-2 transition-colors duration-150
+                      ${
+                        isLinkActive(link.href)
+                          ? "bg-[#121C42] text-[#FFFFFF] dark:bg-[#2db2e6] dark:text-[#121C42]"
+                          : "text-[#121C42] dark:text-white hover:bg-[#121C42] hover:text-[#FFFFFF] dark:hover:bg-[#2db2e6] dark:hover:text-[#121C42]"
+                      }
+                    `}
                   />
                 ))}
             </div>
@@ -108,7 +122,14 @@ const SidebarComponent = () => {
                   <SidebarLink
                     key={idx}
                     link={link}
-                    className="hover:bg-[#121C42] text-[#121C42] rounded-lg p-2 hover:text-[#FFFFFF]"
+                    className={`
+                      rounded-lg p-2 transition-colors duration-150
+                      ${
+                        isLinkActive(link.href)
+                          ? "bg-[#121C42] text-[#FFFFFF] dark:bg-[#2db2e6] dark:text-[#121C42]"
+                          : "text-[#121C42] dark:text-white hover:bg-[#121C42] hover:text-[#FFFFFF] dark:hover:bg-[#FFFFFF] dark:hover:text-[#121C42]"
+                      }
+                    `}
                   />
                 ))}
             </div>
