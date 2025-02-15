@@ -28,18 +28,24 @@ const Dashboard = () => {
       <SidebarComponent />
 
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 ">
-        <div className="w-full max-w-md space-y-4">
-          <div className="text-start space-y-2">
-            <h1 className="font-extrabold text-5xl dark:text-[#E3F4FD] text-[#121C42]">
+        <div className="w-full ml-12 ">
+          <div className="text-start">
+            <h1 className="font-extrabold text-6xl dark:text-[#E3F4FD] text-[#121C42] font-montserrat">
               Connecting <br />
-              <span className="dark:text-[#FFCC04] text-[#2db2e6]">GGSIPU</span>
-              <span className="dark:text-[#E3F4FD] text-[#121C42]"> Alums</span>
+              <span className="dark:text-[#FFCC04] text-[#2db2e6] font-montserrat">
+                GGSIPU
+              </span>
+              <span className="dark:text-[#E3F4FD] text-[#121C42] font-montserrat">
+                {" "}
+                Alums
+              </span>
             </h1>
 
-            <h1 className="flex font-semibold items-center justify-start gap-2 text-3xl dark:text-[#E3F4FD] text-[#121C42]">
+            <h1 className="flex items-center justify-start font-normal text-3xl dark:text-[#E3F4FD] text-[#121C42] font-montserrat">
               Reaching MileStone Together
             </h1>
-            <div className="flex flex-row gap-4 mt-4">
+
+            <div className="flex flex-row gap-4 mt-4 font-montserrat ">
               <button className="rounded-lg font-bold dark:bg-[#FFCC04] bg-[#121C42] p-2 text-[#E3F4FD] dark:text-[#121C42]">
                 Connect
               </button>
