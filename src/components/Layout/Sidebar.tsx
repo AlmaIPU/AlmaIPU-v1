@@ -77,7 +77,7 @@ const SidebarComponent = () => {
     },
     {
       label: "LogOut",
-      href: "/Login",
+      href: "/",
       icon: <LogOut className="h-5 w-5 flex-shrink-0" />,
       isBottom: true,
     },
@@ -91,7 +91,7 @@ const SidebarComponent = () => {
   return (
     <Sidebar>
       <SidebarBody className="justify-between">
-        <div className="flex h-full flex-col flex-1 overflow-y-auto overflow-x-hidden font-montserrat font-semibold">
+        <div className="flex h-full flex-col flex-1 overflow-y-auto overflow-x-hidden font-montserrat font-medium">
           <AlmaIPU />
           <div className="flex h-full flex-col">
             {/* Top Links */}
@@ -106,8 +106,8 @@ const SidebarComponent = () => {
                       rounded-lg p-2 transition-colors duration-150
                       ${
                         isLinkActive(link.href)
-                          ? "bg-[#121C42] text-[#FFFFFF] dark:bg-[#2db2e6] dark:text-[#121C42]"
-                          : "text-[#121C42] dark:text-white hover:bg-[#121C42] hover:text-[#FFFFFF] dark:hover:bg-[#2db2e6] dark:hover:text-[#121C42]"
+                          ? "bg-[#0A153A] text-[#FFFFFF] dark:bg-[#1B52CC] dark:text-white"
+                          : "text-[#0A153A] dark:text-[#1BB3EF] hover:bg-[#0A153A] hover:text-[#FFFFFF] dark:hover:bg-[#1B52CC] "
                       }
                     `}
                   />
@@ -126,8 +126,8 @@ const SidebarComponent = () => {
                       rounded-lg p-2 transition-colors duration-150
                       ${
                         isLinkActive(link.href)
-                          ? "bg-[#121C42] text-[#FFFFFF] dark:bg-[#2db2e6] dark:text-[#121C42]"
-                          : "text-[#121C42] dark:text-white hover:bg-[#121C42] hover:text-[#FFFFFF] dark:hover:bg-[#FFFFFF] dark:hover:text-[#121C42]"
+                          ? "bg-[#0A153A] text-[#FFFFFF] dark:bg-[#1B52CC] dark:text-white"
+                          : "text-[#0A153A] dark:text-[#1BB3EF] hover:bg-[#0A153A] hover:text-[#FFFFFF] dark:hover:bg-[#1B52CC]"
                       }
                     `}
                   />
