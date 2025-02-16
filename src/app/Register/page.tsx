@@ -171,7 +171,7 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={loading}
-                onClick={() => router.push("/Login")}
+                onClick={() => router.push("/")}
                 className="w-full py-3 rounded-md bg-[#121C42] dark:bg-[#E3F4FD] font-semibold transition-all duration-200 hover:text-[#FFCC04] focus:ring-2 focus:ring-[#1A2251] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-[#E3F4FD] dark:text-[#1A2251]"
               >
                 {loading ? "Redirecting..." : "Log In"}

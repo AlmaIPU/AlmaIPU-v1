@@ -22,37 +22,37 @@ const Dashboard = () => {
 
   return (
     <div
-      className="flex h-screen bg-gradient-to-tl from-[#2db2e6] to-[#eaf8ff] 
-       dark:from-[#0b1a3b] dark:to-[#0b2f5d]"
+      className="flex h-screen bg-gradient-to-tl from-[#88C4FF] to-[#DCEAFF] 
+       dark:from-[#0B1635] dark:to-[#0B3363]"
     >
       <SidebarComponent />
 
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 ">
         <div className="w-full ml-12 ">
           <div className="text-start">
-            <h1 className="font-extrabold text-6xl dark:text-[#E3F4FD] text-[#121C42] font-montserrat">
+            <h1 className="font-extrabold text-6xl dark:text-[#E9F6FD] text-[#0A153A] font-montserrat">
               Connecting <br />
-              <span className="dark:text-[#FFCC04] text-[#2db2e6] font-montserrat">
+              <span className="dark:text-[#FFCB04] text-[#1BB3EF] font-montserrat">
                 GGSIPU
               </span>
-              <span className="dark:text-[#E3F4FD] text-[#121C42] font-montserrat">
+              <span className="dark:text-[#E9F6FD] text-[#0A153A] font-montserrat">
                 {" "}
                 Alums
               </span>
             </h1>
 
-            <h1 className="flex items-center justify-start font-normal text-3xl dark:text-[#E3F4FD] text-[#121C42] font-montserrat">
+            <h1 className="flex items-center justify-start font-normal text-3xl dark:text-[#E9F6FD] text-[#0A153A] font-montserrat">
               Reaching MileStone Together
             </h1>
 
             <div className="flex flex-row gap-4 mt-4 font-montserrat ">
-              <button className="rounded-lg font-bold dark:bg-[#FFCC04] bg-[#121C42] p-2 text-[#E3F4FD] dark:text-[#121C42]">
+              <button className="rounded-lg font-bold dark:bg-[#FFCB04] bg-[#121C42] p-2 text-[#E3F4FD] dark:text-[#0A153A]">
                 Connect
               </button>
-              <button className="rounded-lg font-bold dark:bg-[#FFCC04] bg-[#121C42] p-2 text-[#E3F4FD] dark:text-[#121C42]">
+              <button className="rounded-lg font-bold dark:bg-[#FFCB04] bg-[#0A153A] p-2 text-[#E3F4FD] dark:text-[#0A153A]">
                 Community
               </button>
-              <button className="rounded-lg font-bold dark:bg-[#FFCC04] bg-[#121C42] p-2 text-[#E3F4FD] dark:text-[#121C42]">
+              <button className="rounded-lg font-bold dark:bg-[#FFCB04] bg-[#0A153A] p-2 text-[#E3F4FD] dark:text-[#121C42]">
                 Chat App
               </button>
             </div>

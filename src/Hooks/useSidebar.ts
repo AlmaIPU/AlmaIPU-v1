@@ -1,4 +1,3 @@
-// hooks/useSidebar.ts
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../Redux/store";
 import { toggleSidebar, setSidebarOpen } from "../Redux/sidebarSlice";

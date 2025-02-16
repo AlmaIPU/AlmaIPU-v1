@@ -7,7 +7,7 @@ import ThemeProvider from "../Redux/themeProvider"; // Import ThemeProvider
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["200", "400", "700"],
+  weight: ["200", "500", "700"],
 });
 
 const geistMono = Geist_Mono({

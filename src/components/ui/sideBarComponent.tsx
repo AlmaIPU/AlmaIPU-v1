@@ -49,7 +49,7 @@ export const SidebarLink: React.FC<SidebarLinkProps> = ({
       onClick={handleClick}
       {...props}
     >
-      <div className="group-hover:text-[#FFFFFF] dark:group-hover:text-[#121C42] dark:text-white transition-colors duration-150">
+      <div className="group-hover:text-[#FFFFFF] transition-colors duration-150">
         {link.icon}
       </div>
       <motion.span
@@ -57,7 +57,7 @@ export const SidebarLink: React.FC<SidebarLinkProps> = ({
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-sm whitespace-pre inline-block !p-0 !m-0 transition-colors duration-150 group-hover:text-[#FFFFFF] dark:group-hover:text-[#121C42] dark:text-white"
+        className="text-sm whitespace-pre inline-block !p-0 !m-0 transition-colors duration-150 group-hover:text-[#FFFFFF]"
       >
         {link.label}
       </motion.span>
@@ -83,7 +83,7 @@ export const DesktopSidebar = ({
   return (
     <motion.div
       className={cn(
-        "h-screen px-4 py-4 bg-[#2db2e6] dark:bg-[#121C42] flex-shrink-0",
+        "h-screen px-4 py-4 bg-[#1BB3EF] dark:bg-[#0A153A] flex-shrink-0",
         className
       )}
       animate={{
