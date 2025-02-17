@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sideBarComponent";
 import {
   Search,
@@ -17,10 +17,12 @@ import ThemeToggle from "../ui/themeToggel";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
 import { usePathname } from "next/navigation";
+import ProfileForm from "./Profile";
 
 const SidebarComponent = () => {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
   const pathname = usePathname();
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const AlmaIPU = () => (
     <Image
@@ -71,7 +73,7 @@ const SidebarComponent = () => {
     },
     {
       label: "Ankit",
-      href: "/profile",
+      href: "",
       icon: <CircleUser className="h-5 w-5 flex-shrink-0" />,
       isBottom: true,
     },
@@ -89,54 +91,63 @@ const SidebarComponent = () => {
   };
 
   return (
-    <Sidebar>
-      <SidebarBody className="justify-between">
-        <div className="flex h-full flex-col flex-1 overflow-y-auto overflow-x-hidden font-montserrat font-medium">
-          <AlmaIPU />
-          <div className="flex h-full flex-col">
-            {/* Top Links */}
-            <div className="flex flex-col gap-2">
-              {links
-                .filter((link) => !link.isBottom)
-                .map((link, idx) => (
-                  <SidebarLink
-                    key={idx}
-                    link={link}
-                    className={`
+    <>
+      <Sidebar>
+        <SidebarBody className="justify-between">
+          <div className="flex h-full flex-col flex-1 overflow-y-auto overflow-x-hidden font-montserrat font-medium">
+            <AlmaIPU />
+            <div className="flex h-full flex-col">
+              {/* Top Links */}
+              <div className="flex flex-col gap-2">
+                {links
+                  .filter((link) => !link.isBottom)
+                  .map((link, idx) => (
+                    <SidebarLink
+                      key={idx}
+                      link={link}
+                      className={`
                       rounded-lg p-2 transition-colors duration-150
                       ${
                         isLinkActive(link.href)
                           ? "bg-[#0A153A] text-[#FFFFFF] dark:bg-[#1B52CC] dark:text-white"
-                          : "text-[#0A153A] dark:text-[#1BB3EF] hover:bg-[#0A153A] hover:text-[#FFFFFF] dark:hover:bg-[#1B52CC] "
+                          : "text-[#0A153A] dark:text-[#FFFFFF] hover:bg-[#0A153A] hover:text-[#FFFFFF] dark:hover:bg-[#1B52CC] "
                       }
                     `}
-                  />
-                ))}
-            </div>
+                    />
+                  ))}
+              </div>
 
-            {/* Bottom Links */}
-            <div className="mt-auto flex flex-col gap-2 mb-2">
-              {links
-                .filter((link) => link.isBottom)
-                .map((link, idx) => (
-                  <SidebarLink
-                    key={idx}
-                    link={link}
-                    className={`
+              {/* Bottom Links */}
+              <div className="mt-auto flex flex-col gap-2 mb-2">
+                {links
+                  .filter((link) => link.isBottom)
+                  .map((link, idx) => (
+                    <SidebarLink
+                      key={idx}
+                      link={link}
+                      className={`
                       rounded-lg p-2 transition-colors duration-150
                       ${
                         isLinkActive(link.href)
                           ? "bg-[#0A153A] text-[#FFFFFF] dark:bg-[#1B52CC] dark:text-white"
-                          : "text-[#0A153A] dark:text-[#1BB3EF] hover:bg-[#0A153A] hover:text-[#FFFFFF] dark:hover:bg-[#1B52CC]"
+                          : "text-[#0A153A] dark:text-[#FFFFFF] hover:bg-[#0A153A] hover:text-[#FFFFFF] dark:hover:bg-[#1B52CC]"
                       }
                     `}
-                  />
-                ))}
+                      onClick={() =>
+                        link.label === "Ankit" && setIsProfileOpen(true)
+                      }
+                    />
+                  ))}
+              </div>
             </div>
           </div>
-        </div>
-      </SidebarBody>
-    </Sidebar>
+        </SidebarBody>
+      </Sidebar>
+      <ProfileForm
+        isOpen={isProfileOpen}
+        onClose={() => setIsProfileOpen(false)}
+      />
+    </>
   );
 };
 
